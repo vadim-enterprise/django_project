@@ -19,7 +19,7 @@ def process_audio(request):
         # Transcribe the audio file
         transcribed_text = transcribe_audio(file_path)
 
-        api_key = 
+        #api_key = 
 
         client = OpenAI(api_key=api_key)
 
