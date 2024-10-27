@@ -23,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-q5(d0j*erh^x=rjleyuz3a%5rbj5f#cn$l1$!cb5@5lygoq3vp"
 
-OPENAI_API_KEY = "sk-"
+OPENAI_API_KEY = "sk--WBwjubJegSym2DNIcnVmCnm7HO227FmpR6jd7uo52T3BlbkFJ6HKFQ3-iKIRlPG_iF1zu6qa5YD1YagxBgUcd69c-MA"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.21.100.31', 'www.b2bappstore.click']
+ALLOWED_HOSTS = ['3.89.144.101', 'www.b2bappstore.click', 'b2bappstore.click', '127.0.0.1']
 
 # Application definition
 
@@ -59,7 +59,7 @@ ROOT_URLCONF = "django_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "predict_best_option/templates/predict_best_option")],
+        "DIRS": [os.path.join(BASE_DIR, "/predict_best_option/ templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -131,7 +131,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    BASE_DIR / "predict_best_option/static/",
+    BASE_DIR / "predict_best_option" / "static",
 ]
 # Directory where static files will be collected (for production)
 STATIC_ROOT = BASE_DIR / 'assets'
