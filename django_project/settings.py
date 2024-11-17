@@ -28,7 +28,10 @@ OPENAI_API_KEY = "sk--WBwjubJegSym2DNIcnVmCnm7HO227FmpR6jd7uo52T3BlbkFJ6HKFQ3-iK
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.89.144.101', 'www.b2bappstore.click', 'b2bappstore.click', '127.0.0.1']
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1073741824 
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1073741824  
+
+ALLOWED_HOSTS = ['54.243.26.89', 'www.b2bappstore.click', 'b2bappstore.click', '127.0.0.1']
 
 # Application definition
 
@@ -54,6 +57,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://www.b2bappstore.click']
+
 ROOT_URLCONF = "django_project.urls"
 
 TEMPLATES = [
@@ -74,6 +79,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "django_project.wsgi.application"
 ASGI_APPLICATION = "django_project.asgi.application"
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -129,9 +140,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-eval'") 
+
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_HTTPONLY = False
+
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    BASE_DIR / "predict_best_option" / "static",
+    BASE_DIR / "static",
 ]
 # Directory where static files will be collected (for production)
 STATIC_ROOT = BASE_DIR / 'assets'
@@ -140,3 +159,31 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 #Place to store ML models
 MODELS = os.path.join(BASE_DIR, 'ml_models')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'predict_best_option': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
