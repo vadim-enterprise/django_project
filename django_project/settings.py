@@ -21,6 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "django-insecure-q5(d0j*erh^x=rjleyuz3a%5rbj5f#cn$l1$!cb5@5lygoq3vp"
+OPENAI_API_KEY = "sk-LqFYFnV9MF0xy9DmjPwMSLotYKdTj7gkKEIKkAs4lDT3BlbkFJYt01anCJS46iABMMq_OlT8mMtfLMoVGRK5YYgWu6AA"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -153,6 +155,12 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / 'assets'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Microsoft Graph API Settings
+MS_TENANT_ID = 'your_tenant_id'
+MS_CLIENT_ID = 'your_client_id'
+MS_CLIENT_SECRET = 'your_client_secret'
+MS_USER_ID = 'your_user_id'  # Usually the email address
 
 #Place to store ML models
 MODELS = os.path.join(BASE_DIR, 'ml_models')
